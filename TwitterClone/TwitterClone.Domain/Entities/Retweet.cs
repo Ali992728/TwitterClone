@@ -9,5 +9,11 @@ namespace TwitterClone.Domain.Entities
         public Guid UserId { get; set; }
         public Guid TweetId { get; set; }
         public DateTime RetweetedAt { get; set; }
+
+        public Retweet()
+        {
+            UserId = Guid.NewGuid();
+            TweetId = Guid.NewGuid();
+        }
     }
 }

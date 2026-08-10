@@ -12,5 +12,12 @@ namespace TwitterClone.Domain.Entities
         public string Content { get; set; }
         public DateTime SentAt { get; set; }
         public bool IsRead { get; set; }
+
+        public Message()
+        {
+            Id = Guid.NewGuid();
+            SenderId = Guid.NewGuid();
+            ReceiverId = Guid.NewGuid();
+        }
     }
 }
