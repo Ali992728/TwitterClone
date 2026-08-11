@@ -4,18 +4,48 @@ using System.Text;
 
 namespace TwitterClone.Domain.Entities
 {
-    public class Notification
+    public class Notification : BaseEntity
     {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-        public string Message { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public bool IsRead { get; set; }
+        private Guid _userId;
+        private string _type;
+        private string _message;
+        private bool _isRead;
 
-        public Notification()
+
+        public Notification(string notificationType) : base(Guid.NewGuid())
         {
-            Id = Guid.NewGuid();
-            UserId = Guid.NewGuid();
+            _type = notificationType;
+        }
+
+
+        public Guid UserId
+        {
+            get { return _userId; }
+            set { _userId = value; }
+        }
+
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
+        protected string Message
+        {
+            get { return _message; }
+            set { _message = value; }
+        }
+
+        public bool IsRead
+        {
+            get { return _isRead; }
+            set { _isRead = value; }
+        }
+
+        public override string DescribedRecord()
+        {
+            var baseRecord = base.DescribedRecord();
+            return $"{baseRecord}, UserId: {UserId}, Type: {Type}, Message: {Message}, IsRead: {IsRead}";
         }
     }
 }
