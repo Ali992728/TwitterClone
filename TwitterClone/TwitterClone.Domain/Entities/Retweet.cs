@@ -1,19 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace TwitterClone.Domain.Entities
 {
-    public class Retweet
+    public class Retweet:BaseEntity
     {
-        public Guid UserId { get; set; }
-        public Guid TweetId { get; set; }
-        public DateTime RetweetedAt { get; set; }
-
-        public Retweet()
+        private Guid _userId;
+        private Guid _tweetId;
+        private string _comment;
+        public Retweet():base(Guid.NewGuid())
         {
-            UserId = Guid.NewGuid();
-            TweetId = Guid.NewGuid();
+
+        }
+        public Guid UserId
+        {
+            get { return _userId; }
+            set { _userId = value; }
+        }
+        public Guid TweetId
+        {
+            get { return _tweetId; }
+            set { _tweetId = value; }
+        }
+        public string Comment 
+        {
+            get { return _comment; }
+            set { _comment = value; }
+        }
+        public override string DescribedRecord()
+        {
+            var baseRecord = base.DescribedRecord();
+            return $"{baseRecord},UserId:{UserId},TweetId:{TweetId},Comment:{Comment}";
         }
     }
 }

@@ -4,16 +4,28 @@ using System.Text;
 
 namespace TwitterClone.Domain.Entities
 {
-    public class Tweet
+    public class Tweet:BaseEntity
     {
-        public Guid Id { get; set; }
-        public Guid AuthorId { get; set; }
-        public string Content { get; set; }
-
-        public Tweet()
+        private Guid _userId;
+        private string _content;
+        public Tweet(string content):base(Guid.NewGuid())
         {
-            Id = Guid.NewGuid();
-            AuthorId = Guid.NewGuid();
+            _content = content;
+        }
+        public Guid UserId
+        {
+            get { return _userId; }
+            set { _userId = value; }
+        }
+        public string Content
+        {
+            get { return _content; }
+            set { _content = value; }
+        }
+        public override string DescribedRecord()
+        {
+            var baseRecord = base.DescribedRecord();
+            return $"{baseRecord},UserId:{UserId},Content:{Content}";
         }
     }
 }
