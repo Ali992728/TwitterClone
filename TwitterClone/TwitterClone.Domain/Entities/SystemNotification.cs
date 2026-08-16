@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TwitterClone.Domain.Entities
 {
@@ -16,9 +18,14 @@ namespace TwitterClone.Domain.Entities
             Message = message;
         }
 
-        public override string DescribedRecord()
+        public override string DescribeRecord()
         {
-            return base.DescribedRecord();
+            return base.DescribeRecord();
+        }
+
+        public override string GetMessage()
+        {
+            return $"System Notification: Unknown Error";
         }
     }
 }

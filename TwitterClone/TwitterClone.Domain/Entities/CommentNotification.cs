@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TwitterClone.Domain.Entities
 {
@@ -18,10 +20,15 @@ namespace TwitterClone.Domain.Entities
             Message = message;
         }
 
-        public override string DescribedRecord()
+        public override string DescribeRecord()
         {
-            var baseRecord = base.DescribedRecord();
+            var baseRecord = base.DescribeRecord();
             return $"{baseRecord}, CommentByUserId: {CommentByUserId}";
+        }
+
+        public override string GetMessage()
+        {
+            return $"User with ID {CommentByUserId} commented on your post.";
         }
     }
 }

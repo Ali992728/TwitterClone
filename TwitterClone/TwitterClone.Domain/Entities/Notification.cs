@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace TwitterClone.Domain.Entities
 {
-    public class Notification : BaseEntity
+    public abstract class Notification : BaseEntity
     {
         private Guid _userId;
         private string _type;
         private string _message;
         private bool _isRead;
-
+        
 
         public Notification(string notificationType) : base(Guid.NewGuid())
         {
             _type = notificationType;
         }
-
+       
 
         public Guid UserId
         {
@@ -42,10 +38,11 @@ namespace TwitterClone.Domain.Entities
             set { _isRead = value; }
         }
 
-        public override string DescribedRecord()
+        public string GetNotificationInfo()
         {
-            var baseRecord = base.DescribedRecord();
-            return $"{baseRecord}, UserId: {UserId}, Type: {Type}, Message: {Message}, IsRead: {IsRead}";
+            return $"UserId: {_userId}, NotificationType: {_type}";
         }
+
+        public abstract string GetMessage();
     }
 }
