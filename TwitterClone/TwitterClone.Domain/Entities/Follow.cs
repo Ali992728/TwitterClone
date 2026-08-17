@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace TwitterClone.Domain.Entities
 {
     public class Follow : BaseEntity
@@ -26,9 +22,9 @@ namespace TwitterClone.Domain.Entities
             set { _followingId = value; }
         }
 
-        public override string DescribedRecord()
+        public override string DescribeRecord()
         {
-            var baseRecord = base.DescribedRecord();
+            var baseRecord = base.DescribeRecord();
             return $"{baseRecord}, FollowerId: {FollowerId}, FollowingId: {FollowingId}";
         }
     }

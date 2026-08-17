@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
-    public class User:BaseEntity
+    public class User : BaseEntity
     {
-        public User():base(Guid.NewGuid())
+
+        public User() : base(Guid.NewGuid())
         {
 
         }
@@ -20,20 +17,23 @@ namespace TwitterClone.Domain.Entities
             get { return _firstName; }
             set { _firstName = value; }
         }
+
         public string LastName
         {
             get { return _lastName; }
             set { _lastName = value; }
         }
+
         public string Email
         {
             get { return _email; }
             set { _email = value; }
         }
-        public override string DescribedRecord()
+
+        public override string DescribeRecord()
         {
-            var baseRecord = base.DescribedRecord();
-            return $"{baseRecord},FirstName:{FirstName},LastName:{LastName},Email:{Email};"
+            var baseRecord = base.DescribeRecord();
+            return $"{baseRecord}, FirstName: {FirstName}, LastName: {LastName}, Email: {Email}";
         }
     }
 }

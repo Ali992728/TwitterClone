@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
     public class BaseEntity
     {
@@ -12,16 +8,15 @@ namespace TwitterClone.Domain.Entities
         public Guid CreatedBy { get; private set; }
         public Guid? ModifiedBy { get; private set; }
 
-
         public BaseEntity(Guid id)
         {
             Id = id;
             CreatedAt = DateTime.UtcNow;
         }
 
-        public virtual string DescribedRecord()
+        public virtual string DescribeRecord()
         {
-            return $"BaseEntity:Id:{Id},CreatedAt:{CreatedAt},ModifiedAt:{ModifiedAt},CreatedBy:{CreatedBy},ModifiedBy:{ModifiedBy}";
+            return $"BaseEntity: Id: {Id}, CreatedAt: {CreatedAt}, ModifiedAt: {ModifiedAt}, CreatedBy: {CreatedBy}, ModifiedBy: {ModifiedBy}";
         }
     }
 }
